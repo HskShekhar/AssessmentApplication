@@ -1,29 +1,24 @@
 using AssessmentApplication.Authentication;
+using AssessmentApplication.Models;
 using AssessmentApplication.Repository;
 using AssessmentApplication.Repository.DBContext;
 using AssessmentApplication.RepositoryImplementation;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace AssessmentApplication
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
+        public Startup(IConfiguration configuration/*, IUserRepository userRepository*/)
         {
             Configuration = configuration;
         }
@@ -57,6 +52,7 @@ namespace AssessmentApplication
             });
 
             services.AddSingleton<IAuthenticationManager> (new JwtAuthenticationManager(key));
+            services.AddScoped<IBaseRepository<BaseModel>, BaseRepositoryImplementation<BaseModel>>();
             services.AddScoped<IUserRepository, UserRepoImplementation>();
             services.AddScoped<IProjectRepository, ProjectRepositoryImplementation>();
             services.AddScoped<IUserTaskRepository, UserTasksRepositoryImplementation>();

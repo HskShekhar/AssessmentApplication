@@ -1,14 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace AssessmentApplication.Models
+﻿namespace AssessmentApplication.Models
 {
-    public class Project
+    public class Project : BaseModel
     {
-        public int Id { get; set; }
-
         public string Title { get; set; }
 
         public double Duration { get; set; }

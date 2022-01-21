@@ -1,21 +1,18 @@
 ﻿using AssessmentApplication.Models;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace AssessmentApplication.Repository
 {
-    public interface IUserTaskRepository
+    public interface IUserTaskRepository : IBaseRepository<UserTask>
     {
-        List<UserTask> GetAllTasks();
+        //List<UserTask> GetAllTasks();
 
-        UserTask GetTasksById(int id);
+        //UserTask GetTasksById(int id);
 
-        UserTask AddTask(UserTask utask);
+        //UserTask AddTask(UserTask utask);
 
-        void DeleteTask(int id);
+        //void DeleteTask(int id);
 
-        void UpdateTask(UserTask utask);
+        //void UpdateTask(UserTask utask);
     }
 }

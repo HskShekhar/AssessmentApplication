@@ -1,21 +1,18 @@
 ﻿using AssessmentApplication.Models;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace AssessmentApplication.Repository
 {
-    public interface IProjectRepository
+    public interface IProjectRepository : IBaseRepository<Project>
     {
-        List<Project> GetAllProjects();
+        //List<Project> GetAllProjects();
 
-        Project GetProjectById(int id);
+        //Project GetProjectById(int id);
 
-        Project AddProject(Project project);
+        //Project AddProject(Project project);
 
-        void DeleteProject(int id);
+        //void DeleteProject(int id);
 
-        void UpdateProject(Project project);
+        //void UpdateProject(Project project);
     }
 }

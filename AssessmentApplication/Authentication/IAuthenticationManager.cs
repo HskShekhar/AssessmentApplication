@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using AssessmentApplication.Models;
 
 namespace AssessmentApplication.Authentication
 {
     public interface IAuthenticationManager
     {
-        string Authenticate(string userName, string password);
+        string Authenticate(UserAuth user);
     }
 }

@@ -1,11 +1,7 @@
 ﻿using AssessmentApplication.Authentication;
 using AssessmentApplication.Models;
-using Microsoft.AspNetCore.Http;
+using AssessmentApplication.Repository;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace AssessmentApplication.Controllers
 {
@@ -14,17 +10,19 @@ namespace AssessmentApplication.Controllers
     public class AuthController : ControllerBase
     {
         private readonly IAuthenticationManager _authenticationmanager;
+        private readonly IUserRepository _repository;
 
-        public AuthController(IAuthenticationManager authenticationmanager)
+        public AuthController(IAuthenticationManager authenticationmanager, IUserRepository repo)
         {
             _authenticationmanager = authenticationmanager;
+            _repository = repo;
         }
 
         [HttpPost]
         [Route("api/[controller]/login")]
-        public IActionResult Login(UserAuth userAuth)
+        public IActionResult Login(UserAuth user)
         {
-            var token = _authenticationmanager.Authenticate(userAuth.UserName, userAuth.Password);
+            var token = _authenticationmanager.Authenticate(user);
             if (token == null)
                 return Unauthorized();
             return Ok(token);

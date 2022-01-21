@@ -1,14 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace AssessmentApplication.Models
+﻿namespace AssessmentApplication.Models
 {
-    public class UserTask
+    public class UserTask: BaseModel
     {
-        public int Id { get; set; }
-
         public string TaskName { get; set; }
 
         public string Status { get; set; }

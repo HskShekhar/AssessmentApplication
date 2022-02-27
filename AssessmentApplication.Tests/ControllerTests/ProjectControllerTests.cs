@@ -22,9 +22,9 @@ namespace AssessmentApplication.Tests.ControllerTests
             _project = new Project()
             {
                 Id = 1,
-                Cost = 10000,
-                Title = "This is a test Project",
-                Duration = 0.5
+                Name = "project 1",
+                Detail = "This is a test Project",
+                CreatedOn = DateTime.Now
             };
 
             _projectRepoMock = new Mock<IProjectRepository>();

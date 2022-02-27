@@ -1,10 +1,14 @@
-﻿namespace AssessmentApplication.Models
-{
-    public class UserTask: BaseModel
-    {
-        public string TaskName { get; set; }
+﻿using System;
 
-        public string Status { get; set; }
+namespace AssessmentApplication.Models
+{
+    public class UserTask : BaseModel
+    {
+        public int ProjectId { get; set; }
+        public int Status { get; set; }
+        public int AssignedToUserId { get; set; }
+        public string Detail { get; set; }
+        public DateTime CreatedOn { get; set; }
 
     }
 }

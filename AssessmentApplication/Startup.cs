@@ -51,6 +51,11 @@ namespace AssessmentApplication
                 options.UseSqlServer(Configuration.GetConnectionString("myLocalDB"));
             });
 
+            services.AddCors(c =>
+            {
+                c.AddPolicy("AllowOrigin", options => options.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
+            });
+
             services.AddSingleton<IAuthenticationManager> (new JwtAuthenticationManager(key));
             services.AddScoped<IBaseRepository<BaseModel>, BaseRepositoryImplementation<BaseModel>>();
             services.AddScoped<IUserRepository, UserRepoImplementation>();
@@ -74,7 +79,18 @@ namespace AssessmentApplication
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "AssessmentApplication v1"));
             }
 
+            using (var serviceScope = app.ApplicationServices.GetService<IServiceScopeFactory>().CreateScope())
+            {
+                var context = serviceScope.ServiceProvider.GetRequiredService<AppDBContext>();
+                context.Database.Migrate();
+            }
+
             app.UseRouting();
+            app.UseCors(x => x
+            .AllowAnyOrigin()
+            .AllowAnyMethod()
+            .AllowAnyHeader());
+
             app.UseAuthentication();
             app.UseAuthorization();
 

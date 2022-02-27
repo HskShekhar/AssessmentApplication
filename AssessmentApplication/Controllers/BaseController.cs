@@ -144,5 +144,37 @@ namespace AssessmentApplication.Controllers
             }
             return NotFound();
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [HttpDelete]
+        [ProducesResponseType(typeof(BaseModel), 200)]
+        [ProducesResponseType(404)]
+        [ProducesResponseType(500)]
+        public virtual IActionResult Delete(int id)
+        {
+            try
+            {
+                var entity = _baseRepository.GetById(id);
+                if (entity == null)
+                    return BadRequest();
+
+                if (_baseRepository.Delete(id))
+                {
+                    return Ok(new
+                    {
+                        message = "Entity has been deleted"
+                    });
+                }
+            }
+            catch (Exception)
+            {
+
+            }
+            return BadRequest();
+        }
     }
 }

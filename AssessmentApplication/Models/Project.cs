@@ -1,11 +1,11 @@
-﻿namespace AssessmentApplication.Models
+﻿using System;
+
+namespace AssessmentApplication.Models
 {
     public class Project : BaseModel
     {
-        public string Title { get; set; }
-
-        public double Duration { get; set; }
-
-        public double Cost { get; set; }
+        public string Name { get; set; }
+        public string Detail { get; set; }
+        public DateTime CreatedOn { get; set; }
     }
 }

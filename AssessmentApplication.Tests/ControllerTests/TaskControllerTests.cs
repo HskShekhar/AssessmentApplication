@@ -21,8 +21,11 @@ namespace AssessmentApplication.Tests.ControllerTests
             _userTask = new UserTask()
             {
                 Id = 1,
-                TaskName = "Task1",
-                Status = "Completed"
+                AssignedToUserId = 1,
+                Status = 1,
+                Detail = "Task 1",
+                ProjectId = 1,
+                CreatedOn = System.DateTime.Now
             };
 
             _userTaskRepoMock = new Mock<IUserTaskRepository>();

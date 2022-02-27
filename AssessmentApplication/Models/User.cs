@@ -1,8 +1,7 @@
 ﻿namespace AssessmentApplication.Models
 {
-    public class User: BaseModel
+    public class User : BaseModel
     {
-        public string UserName { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Email { get; set; }

@@ -22,7 +22,7 @@ namespace AssessmentApplication.Tests.IntegrationTests
             _httpClientWithFullIntegration ??= _customWebApplicationFactory.CreateClient();
             var user = new User()
             {
-                UserName = "string",
+                FirstName = "string",
                 Password = "string"
             };
             _token = GetToken(user);
